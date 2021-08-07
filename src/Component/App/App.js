@@ -1,12 +1,11 @@
-import React from 'react'
-import './App.css';
+import React from "react";
+import "./App.css";
 
-import SearchBar from '../SearchBar/SearchBar'
-import SearchResults from '../SearchResults/SearchResults'
-import Playlist from '../Playlist/Playlist'
+import SearchBar from "../SearchBar/SearchBar";
+import SearchResults from "../SearchResults/SearchResults";
+import Playlist from "../Playlist/Playlist";
 
-import Spotify from '../../util/Spotify';
-
+import Spotify from "../../util/Spotify";
 
 class App extends React.Component {
   constructor(props) {
@@ -39,27 +38,27 @@ class App extends React.Component {
     this.setState({ playlistName: name });
   }
   savePlaylist() {
-    const trackUris = this.state.playlistTracks.map(track => track.uri);
+    const trackUris = this.state.playlistTracks.map((track) => track.uri);
     Spotify.savePlayList(this.state.playlistName, trackUris).then(() => {
       this.setState({
         playlistName: "New Playlist",
         playlistTracks: [],
-      })
-    })
+      });
+    });
   }
   search(term) {
-    Spotify.search(term).then(searchResults => {
-      this.setState({searchResults: searchResults})
-    })
+    Spotify.search(term).then((searchResults) => {
+      this.setState({ searchResults: searchResults });
+    });
   }
   render() {
     return (
       <div>
         <h1>
-          Ku<span className="highlight">ccc</span>ing
+          oke<span className="highlight">ccc</span>ing
         </h1>
         <div className="App">
-          <SearchBar onSearch={this.search}/>
+          <SearchBar onSearch={this.search} />
           <div className="App-playlist">
             <SearchResults
               searchResults={this.state.searchResults}
